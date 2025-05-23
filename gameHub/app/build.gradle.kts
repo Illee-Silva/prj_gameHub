@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.gamehub"
+    namespace = "com.drakarius.gamehub"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.gamehub"
+        applicationId = "com.drakarius.gamehub"
         minSdk = 28
         targetSdk = 35
         versionCode = 1
@@ -26,9 +26,13 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding = true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -36,6 +40,16 @@ android {
 }
 
 dependencies {
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("io.coil-kt:coil:2.2.2")
+
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+
+    // RecyclerView
+    implementation ("androidx.recyclerview:recyclerview:1.4.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
