@@ -8,7 +8,13 @@ data class Game(
     val rating: Double,
     val ratingCount: Int,
     val esrb_rating: EsrbRating?,
-    val background_image: String?
+    val background_image: String?,
+    val short_screenshots: List<Screenshot> = emptyList()
+)
+
+data class Screenshot(
+    val id: Int,
+    val image: String
 )
 
 data class EsrbRating(
@@ -20,3 +26,4 @@ data class EsrbRating(
 data class GameResponse(
     val results: List<Game>
 )
+

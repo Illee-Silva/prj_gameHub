@@ -9,11 +9,22 @@ import coil.transform.RoundedCornersTransformation
 import com.drakarius.gamehub.databinding.ItemGameBinding
 import com.drakarius.gamehub.model.Game
 
-class GamesAdapter(private val games: MutableList<Game>) :
-    RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
+class GamesAdapter(
+    private val games: MutableList<Game>,
+    private val onItemClick: (Game) -> Unit
+) : RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
 
     inner class GameViewHolder(val binding: ItemGameBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(games[position])
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val binding = ItemGameBinding.inflate(
