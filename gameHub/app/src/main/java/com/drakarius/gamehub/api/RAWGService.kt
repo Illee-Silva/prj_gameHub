@@ -10,7 +10,7 @@ interface RAWGService {
     suspend fun getGames(
         @Query("key") apikey: String,
         @Query("page") page: Int = 1,
-        @Query("page_size") pageSize: Int = 50,
+        @Query("page_size") pageSize: Int = 40,
     ): GameResponse
 
 }

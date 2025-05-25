@@ -7,7 +7,14 @@ data class Game(
     val released: String,
     val rating: Double,
     val ratingCount: Int,
+    val esrb_rating: EsrbRating?,
     val background_image: String?
+)
+
+data class EsrbRating(
+    val id: Int,
+    val name: String,
+    val slug: String
 )
 
 data class GameResponse(

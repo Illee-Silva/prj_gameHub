@@ -12,11 +12,11 @@ class MainViewModel : ViewModel() {
     private val _games = MutableLiveData<List<Game>>()
     val games: MutableLiveData<List<Game>> = _games
 
-    fun loadGames(apiKey: String) {
+    fun loadGames(apiKey: String, page: Int = 1) {
 
         viewModelScope.launch{
             try{
-                val response = RetrofitClient.service.getGames(apiKey)
+                val response = RetrofitClient.service.getGames(apiKey, page)
                 _games.postValue(response.results)
             }
             catch (e: Exception) {
